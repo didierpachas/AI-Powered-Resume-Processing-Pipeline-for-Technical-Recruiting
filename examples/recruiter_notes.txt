@@ -1,0 +1,7 @@
+Position for Senior Backend / Platform Engineer roles in US startups.
+
+Focus on:
+- system design and scalability
+- backend architecture
+- cloud and distributed systems
+- ownership and impact
