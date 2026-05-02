@@ -1,0 +1,48 @@
+{
+  "candidateName": "John D.",
+  "candidateTitle": "Senior Backend Engineer",
+  "candidateLocation": "United States",
+  "summary": "Senior Backend Engineer with 6+ years of experience building scalable APIs and cloud-native systems. Strong background in distributed architecture, performance optimization, and production infrastructure.",
+  "strengths": [
+    {
+      "title": "Backend Architecture",
+      "desc": "Experience designing and scaling backend systems using Node.js and Python, with a focus on performance and maintainability."
+    },
+    {
+      "title": "Cloud & Infrastructure",
+      "desc": "Hands-on experience with AWS, Docker, and Kubernetes to build and deploy distributed systems."
+    },
+    {
+      "title": "Cross-functional Collaboration",
+      "desc": "Works closely with product and data teams to deliver reliable and scalable solutions."
+    }
+  ],
+  "technicalSkills": [
+    {
+      "category": "Programming Languages",
+      "skills": "JavaScript, Python, SQL"
+    },
+    {
+      "category": "Frameworks & Libraries",
+      "skills": "Node.js"
+    },
+    {
+      "category": "Cloud & Infrastructure",
+      "skills": "AWS, Docker, Kubernetes"
+    }
+  ],
+  "expSummaryTable": [
+    {
+      "role": "Senior Software Engineer",
+      "desc": "Large-scale global e-commerce platform",
+      "time": "2021 - Current",
+      "loc": "Seattle, United States"
+    },
+    {
+      "role": "Software Engineer",
+      "desc": "Social media and digital platforms company",
+      "time": "2019 - 2021",
+      "loc": "Menlo Park, United States"
+    }
+  ]
+}
