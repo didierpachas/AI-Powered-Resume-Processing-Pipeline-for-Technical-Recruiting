@@ -1,134 +1,175 @@
-# AI-Powered-Resume-Processing-Pipeline-for-Technical-Recruiting
-Recruiting teams spend significant time manually formatting candidate resumes into standardized templates, slowing down submission speed and reducing time spent on high-value activities.
+# AI-Powered Resume Processing Pipeline
+
+### Scalable Recruiting Infrastructure for Technical Hiring
+
+---
 
 ## Overview
-Recruiting teams often spend a significant amount of time manually formatting candidate resumes into standardized templates for client submission. This process is repetitive, time-consuming, and reduces the time recruiters can spend on high-value activities like sourcing and candidate engagement.
 
-This project showcases an AI-powered pipeline designed to automate that process end-to-end—transforming raw resumes into fully formatted, anonymized, client-ready profiles within seconds.
+Recruiting teams spend a significant amount of time manually transforming raw resumes into standardized, client-ready profiles. This process is repetitive, inconsistent, and limits recruiter bandwidth for high-impact work.
+
+This project demonstrates a **production-inspired pipeline** that automates that workflow end-to-end:
+
+→ Ingest resumes
+→ Process and structure data using LLMs
+→ Enforce formatting and validation rules
+→ Generate consistent, high-quality candidate profiles
+
+The result is a **fast, reliable, and scalable system for recruiting operations**.
 
 ---
 
 ## Problem
-- Manual resume formatting creates operational bottlenecks  
-- Recruiters spend excessive time on administrative work  
-- Inconsistent formatting affects candidate presentation and brand quality  
-- Slower turnaround impacts ability to close competitive roles  
+
+Manual resume processing introduces several bottlenecks:
+
+* High operational overhead for recruiters
+* Inconsistent formatting across candidates
+* Slow turnaround in competitive hiring environments
+* Limited scalability of recruiting teams
 
 ---
 
 ## Solution
-Built an automated pipeline that:
 
-- Ingests resumes via email  
-- Processes and restructures them using LLMs  
-- Applies anonymization and formatting rules  
-- Generates standardized documents using predefined templates  
-- Delivers a ready-to-use profile back to the recruiter  
+This system abstracts resume processing into a **modular pipeline architecture**:
 
-The result is a fast, consistent, and scalable resume processing system.
+* Batch-based processing for throughput control
+* Locking mechanisms to prevent duplicate work
+* AI-driven parsing with structured output enforcement
+* Retry + fallback logic for reliability under API constraints
+* Template-based output generation
+
+Instead of treating recruiting as manual work, this approach treats it as a **scalable system**.
 
 ---
 
 ## Architecture
 
-**High-level workflow:**
+End-to-end flow:
 
-- **Input Layer:** Gmail (resume ingestion + recruiter instructions)  
-- **Processing Layer:** LLM API (structured parsing + enhancement)  
-- **Validation Layer:** Prompt-based rules + JSON structure enforcement  
-- **Output Layer:** Google Docs API (template-based generation)  
-- **Delivery Layer:** Automated email response with document link  
-
----
-
-## Key Features
-
-### Resume Parsing & Structuring
-Converts unstructured resumes into structured JSON format  
-
-### Prompt-Based Validation
-Ensures consistency, formatting rules, and output quality  
-
-### Anonymization Logic
-Removes sensitive data and standardizes company descriptions  
-
-### Template-Based Document Generation
-Produces polished, client-ready profiles aligned with brand standards  
-
-### Recruiter Input Handling
-Dynamically adapts output based on recruiter instructions  
-
-### Fault Tolerance & Reliability
-Includes retry logic, batching, and fallback mechanisms to handle API limits and failures  
-
----
-
-## Impact
-- ~98% reduction in manual administrative work  
-- Near-instant turnaround for candidate submissions  
-- Improved recruiter experience and efficiency  
-- Consistent, high-quality output aligned with company branding  
-
----
-
-## Tech Stack
-- JavaScript (Google Apps Script)  
-- LLM APIs (Gemini / OpenAI)  
-- Gmail API  
-- Google Docs API  
-- Google Drive API  
-
----
-
-## Example Workflow
-
-1. Recruiter sends a resume via email  
-2. System detects and processes the request  
-3. Resume is parsed and enhanced using AI  
-4. Data is structured into a predefined format  
-5. A formatted document is generated automatically  
-6. Recruiter receives a ready-to-use candidate profile  
+```text
+Input Layer       →   Processing Layer      →   Output Layer
+----------------------------------------------------------------
+Resume Intake     →   LLM Structuring       →   Formatted Profile
+Recruiter Notes   →   Validation Rules      →   Delivery
+Batch Queue       →   Retry + Fallback      →   Ready-to-Send Output
+```
 
 ---
 
 ## Repository Structure
 
-    ai-recruiting-pipeline/
-    ├── src/
-    │   ├── pipeline.js        # Orchestrates the workflow
-    │   ├── emailService.js    # Simulates resume ingestion
-    │   ├── aiProcessor.js     # Handles LLM processing
-    │   ├── docGenerator.js    # Generates output documents
-    │   └── utils.js           # Retry logic + helpers
-    │
-    ├── config/
-    │   └── config.js
-    │
-    ├── examples/
-    │   ├── sample_input.txt
-    │   └── sample_output.json
-    │
-    ├── index.js
-    └── README.md
+```bash
+src/
+  index.js                      # Entry point
+  pipeline/
+    processBatch.js             # Batch orchestration + throughput control
+    processSingleResume.js      # Per-resume processing logic
+  services/
+    inputService.js             # Resume ingestion abstraction
+    aiService.js                # LLM interaction layer
+    outputService.js            # Document generation
+  core/
+    retryWithFallback.js        # Reliability layer (retry + model fallback)
+    logger.js                   # Logging utilities
+  prompts/
+    resumePrompt.js             # Prompt construction logic
+
+examples/
+  sampleResume.txt              # Sample raw input
+  sampleOutput.json             # Structured output example
+```
 
 ---
 
-## Notes
-This repository contains a **simplified and sanitized version** of the original internal tool.  
-Sensitive business logic, proprietary prompts, and internal configurations have been modified or removed.
+## Key Features
+
+### 1. Batch Processing & Throughput Control
+
+Processes resumes in controlled batches to prevent overload and improve system stability.
+
+### 2. Locking Mechanism
+
+Prevents duplicate processing using explicit state transitions (pending → processing → done/error).
+
+### 3. AI-Powered Structuring
+
+Transforms unstructured resumes into deterministic JSON outputs using prompt design and validation rules.
+
+### 4. Retry & Fallback Logic
+
+Handles API failures gracefully:
+
+* Retries transient errors
+* Switches to fallback model when needed
+* Prevents pipeline breakdown
+
+### 5. Structured Output Enforcement
+
+Ensures consistency between sections (e.g., experience summary vs detailed experience).
+
+### 6. Modular Service Architecture
+
+Decouples:
+
+* Input handling
+* AI processing
+* Output generation
+
+This makes the system portable across different environments.
+
+---
+
+## Impact
+
+* ~98% reduction in manual resume formatting effort
+* Near-instant turnaround for candidate submissions
+* Consistent, high-quality candidate presentation
+* Increased recruiter capacity for sourcing and engagement
+
+---
+
+## Tech Stack
+
+* JavaScript (Node.js)
+* LLM APIs (model-agnostic design)
+* Modular pipeline architecture
+* JSON-based structured data processing
 
 ---
 
 ## Why This Matters
-This project demonstrates how recruiting operations can be treated as **scalable systems—not just manual workflows**.
 
-By combining technical recruiting expertise with automation and AI, it’s possible to:
-- Increase speed without sacrificing quality  
-- Standardize outputs across teams  
-- Free up recruiters to focus on high-impact work  
+This project demonstrates a key shift:
+
+> Recruiting is not just a workflow — it can be engineered as a system.
+
+By combining:
+
+* Technical recruiting expertise
+* Prompt engineering
+* Distributed system thinking
+
+It’s possible to build infrastructure that:
+
+* Scales recruiting operations
+* Improves quality and consistency
+* Reduces operational overhead
+
+---
+
+## Notes
+
+This repository contains a **sanitized and environment-agnostic version** of an internal tool.
+
+* No proprietary data or credentials included
+* Implementation adapted for public demonstration
+* Focus on architecture and system design
 
 ---
 
 ## Author
-**Didier Pachas**  
-Senior Technical Recruiter | AI-Powered Recruiting Systems
+
+**Didier Pachas**
+Senior Technical Recruiter | Building AI-powered recruiting systems
