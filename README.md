@@ -91,6 +91,28 @@ Includes retry logic, batching, and fallback mechanisms to handle API limits and
 
 ---
 
+## Repository Structure
+
+    ai-recruiting-pipeline/
+    ├── src/
+    │   ├── pipeline.js        # Orchestrates the workflow
+    │   ├── emailService.js    # Simulates resume ingestion
+    │   ├── aiProcessor.js     # Handles LLM processing
+    │   ├── docGenerator.js    # Generates output documents
+    │   └── utils.js           # Retry logic + helpers
+    │
+    ├── config/
+    │   └── config.js
+    │
+    ├── examples/
+    │   ├── sample_input.txt
+    │   └── sample_output.json
+    │
+    ├── index.js
+    └── README.md
+
+---
+
 ## Notes
 This repository contains a **simplified and sanitized version** of the original internal tool.  
 Sensitive business logic, proprietary prompts, and internal configurations have been modified or removed.
