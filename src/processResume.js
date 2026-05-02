@@ -76,10 +76,17 @@ function validateStructure(data) {
   }
 }
 
-async function mockLLMCall() {
-  if (Math.random() < 0.3) {
-    throw new Error("Temporary API failure");
+async function callLLM({ model, prompt, input }) {
+  /**
+   * Simulated external LLM call.
+   * In production, this would call providers like OpenAI or Gemini.
+   */
+  
+  if (!prompt || !input) {
+    throw new Error("Invalid request payload");
   }
+
+  // Simulated structured response
 
   return JSON.stringify({
     candidateName: "John D.",
