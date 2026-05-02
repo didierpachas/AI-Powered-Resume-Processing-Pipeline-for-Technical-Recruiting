@@ -1,0 +1,30 @@
+John Doe
+Senior Software Engineer
+
+Email: john.doe@email.com
+LinkedIn: linkedin.com/in/johndoe
+
+Summary:
+Software engineer with 6+ years of experience working on backend systems, APIs, and cloud infrastructure.
+
+Experience:
+
+Wamazon (2021 - Present)
+Senior Software Engineer
+- Worked on backend services using Node.js and Python
+- Built APIs and improved performance
+- Deployed services using AWS
+- Worked with Docker and Kubernetes
+- Collaborated with product and data teams
+
+Metax (2019 - 2021)
+Software Engineer
+- Developed internal tools and services
+- Worked with microservices architecture
+- Helped migrate systems to the cloud
+
+Skills:
+JavaScript, Python, Node.js, AWS, Docker, Kubernetes, SQL
+
+Education:
+B.S. Computer Science
